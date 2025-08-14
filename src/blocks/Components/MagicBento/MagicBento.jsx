@@ -521,7 +521,7 @@ const MagicBento = ({
 }) => {
   // Always use the custom card data if provided
   const displayCardData = customCardData || cardData;
-  console.log("MagicBento cards:", displayCardData); // Debug output
+  // console.log("MagicBento cards:", displayCardData); // Debug output
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;

@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../blocks/Components/Navbar";
 import Footer from "../blocks/Components/Footer";
+import { Link } from "react-router-dom";
 
 export default function NotFoundPage() {
   return (
@@ -16,12 +17,12 @@ export default function NotFoundPage() {
           <p className="text-white mb-6">
             The page you're looking for doesn't exist or has been moved.
           </p>
-          <a
-            href="/"
+          <Link
+            to="/"
             className="inline-block px-6 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition"
           >
             Go to Home
-          </a>
+          </Link>
         </div>
       </div>
       {/* <Footer /> */}
