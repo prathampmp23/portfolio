@@ -94,7 +94,7 @@ export default function About() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 flex flex-col gap-12 pb-20 px-2 sm:px-5 md:px-0">
+        <main className="flex-1 flex flex-col gap-12 pb-20 px-5 sm:px-5 md:px-0">
           {/* Intro */}
           <section id="intro" className="mb-8 scroll-mt-30">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">

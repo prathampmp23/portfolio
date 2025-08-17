@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Navbar from "../blocks/Components/Navbar";
 import Footer from "../blocks/Components/Footer";
+import LightRays from "../blocks/Backgrounds/LightRays/LightRays";
 
 export default function Project() {
   const projects = [
@@ -74,13 +75,45 @@ export default function Project() {
       ],
     },
   ];
+  // Memoized LightRays to prevent re-renders and glitches
+  const lightRaysBackground = useMemo(() => {
+    return (
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <LightRays
+          key="project-lightrays"
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          seed={12345} // Consistent seed to prevent glitchy reloads
+        />
+      </div>
+    );
+  }, []);
+
   return (
-    <>
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#070210]">
       <Navbar />
-      <section className="px-4 sm:px-6 md:px-20 mt-5 py-16 text-white">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 mt-10 md:ms-30">
-          Projects
-        </h2>
+      {lightRaysBackground}
+      <section className="relative z-10 px-5 sm:px-6 md:px-20 mt-5 py-16 text-white">
+        <h3 className="text-3xl mt-10 font-bold text-white mb-8 md:mb-10 text-center">
+          Featured Projects
+        </h3>
 
         <div className="flex flex-col gap-16">
           {projects.map((project, index) => (
@@ -170,6 +203,6 @@ export default function Project() {
         </div>
       </section>
       <Footer />
-    </>
+    </div>
   );
 }

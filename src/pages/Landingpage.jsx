@@ -2,12 +2,14 @@ import BlurText from "../blocks/TextAnimations/BlurText/BlurText";
 import LightRays from "../blocks/Backgrounds/LightRays/LightRays";
 import MagicBento from "../blocks/Components/MagicBento/MagicBento";
 import Carousel from "../blocks/Components/Carousel/Carousel";
+import ShinyText from "../blocks/TextAnimations/ShinyText/ShinyText";
 import Navbar from "../blocks/Components/Navbar";
 import Footer from "../blocks/Components/Footer";
 import ScrollStack, {
   ScrollStackItem,
 } from "../blocks/Components/ScrollStack/ScrollStack";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { motion } from "framer-motion";
 
 function Landingpage() {
   // Dummy project images
@@ -146,52 +148,79 @@ function Landingpage() {
       <Navbar />
       {/* Hero Section */}
       <div className="relative w-full min-h-[650px] md:min-h-[750px] overflow-hidden bg-[#070210]">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#00ffff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={1.2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          className="custom-rays"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 0,
-            pointerEvents: "none",
-          }}
-        />
-        <div className="absolute mt-16 md:mt-10 md:px-50 px-6 top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
+        {/* Memoized LightRays with persistent seed to prevent glitchy reloads */}
+        {useMemo(() => {
+          // Create a consistent seed to ensure the same ray pattern on each render
+          const staticSeed = 12345;
+          
+          return (
+            <LightRays
+              key="static-lightrays" // Static key prevents recreation
+              raysOrigin="top-center"
+              raysColor="#00ffff"
+              raysSpeed={1.5}
+              lightSpread={0.8}
+              rayLength={1.2}
+              followMouse={true}
+              mouseInfluence={0.1}
+              noiseAmount={0.1}
+              distortion={0.05}
+              seed={staticSeed} // Add consistent seed
+              className="custom-rays"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: 0,
+                pointerEvents: "none",
+              }}
+            />
+          );
+        }, [])} {/* Empty dependency array ensures it's only created once */}
+        <div className="absolute mt-15 md:mt-10 sm:mt-20 md:px-50 px-6 top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
           <BlurText
             text="Transforming ideas into Reality"
             delay={150}
             animateBy="words"
             direction="top"
-            className="text-4xl md:text-8xl font-bold glow text-white justify-center text-center"
+            className="text-5xl sm:text-6xl md:text-8xl font-bold glow text-white justify-center text-center"
           />
           <button className="mt-8 px-5 py-2 border border-gray-600 rounded-full bg-black/30 backdrop-blur text-sm font-medium flex items-center gap-2 text-white hover:border-white">
             <span>⚡</span> Code That Creates Change
           </button>
-          <p className="mt-10 mb-4 text-lg md:text-2xl glow text-white max-w-3xl px-4 text-center leading-relaxed">
-            I'm Pratham, a full stack developer passionate about building
+          {/* Changed from p to div to fix HTML nesting error */}
+          <div className="mt-10 mb-4 text-lg md:text-2xl glow text-white max-w-3xl px-4 text-center leading-relaxed">
+            <ShinyText
+              text=" I'm Pratham, a full stack developer passionate about building
             impactful solutions with MERN, Java, and cloud technologies. I love
-            solving problems and collaborating on innovative projects.
-          </p>
+            solving problems and collaborating on innovative projects."
+              disabled={false}
+              speed={3}
+              className="custom-class"
+            />
+          </div>
           <div className="flex gap-5 mt-12 justify-center">
-            <a 
+            <a
               href="https://drive.google.com/file/d/1l3kQH2XV5BgrlCW0dpBJPm_gDSPEj1Rp/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3.5 rounded-full border border-gray-600 text-gray-300 hover:border-white transition inline-flex items-center cursor-pointer"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
               </svg>
               Download CV
             </a>
@@ -201,22 +230,39 @@ function Landingpage() {
 
       {/* Magic Bento Section */}
       <section className="flex flex-col items-center mt-16 md:mt-24 px-4">
-        <h2 className="text-3xl font-bold text-white mb-8 md:mb-10 text-center">
+        <motion.h2
+          className="text-3xl font-bold text-white mb-8 md:mb-10 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           My Skills & Technologies
-        </h2>
-        <MagicBento
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={300}
-          particleCount={12}
-          glowColor="132, 0, 255"
-          cardData={techStackData}
-        />
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.2,
+            ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier easing
+          }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <MagicBento
+            textAutoHide={true}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            particleCount={12}
+            glowColor="132, 0, 255"
+            cardData={techStackData}
+          />
+        </motion.div>
       </section>
 
       {/* Projects Gallery Section */}
