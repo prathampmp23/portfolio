@@ -37,10 +37,10 @@ function Landingpage() {
     },
     {
       color: "#060010",
-      title: "Cloud Integration",
-      description: "AWS S3, EC2, Amplify for scalable storage & deployment",
-      label: "GitForge",
-      image: "/images/Github.png",
+      title: "Geolocation & Media",
+      description: "Mapbox for location, Cloudinary for images",
+      label: "Integration",
+      image: "/images/Nodejs.svg",
     },
     {
       color: "#060010",
@@ -56,34 +56,13 @@ function Landingpage() {
       label: "Wanderlust",
       image: "/images/Mongo.svg",
     },
+
     {
       color: "#060010",
-      title: "Geolocation & Media",
-      description: "Mapbox for location, Cloudinary for images",
-      label: "Integration",
-      image: "/images/Nodejs.svg",
-    },
-  ];
-
-  // Project data for carousel
-  const projectsData = [
-    {
-      title: "ApnaVideo",
-      description: "Video streaming platform with user authentication",
-      id: 1,
-      image: "/images/ApnaVideo.png",
-    },
-    {
-      title: "GitForge",
-      description: "Git repository management system",
-      id: 2,
-      image: "/images/GitForge.png",
-    },
-    {
-      title: "WanderLust",
-      description: "Travel planning and booking application",
-      id: 3,
-      image: "/images/WanderLust.png",
+      title: "Cloud Integration",
+      description: "AWS S3, EC2, Amplify for scalable storage & deployment",
+      label: "GitForge",
+      image: "/images/Github.png",
     },
   ];
 
@@ -128,8 +107,9 @@ function Landingpage() {
   }, []);
 
   // Calculate responsive dimensions
-  const carouselWidth = Math.min(500, windowWidth - 40);
-  const imageHeight = Math.min(250, carouselWidth * 0.6);
+  // Use a smaller base width for mobile to ensure proper display
+  const carouselWidth = windowWidth < 640 ? Math.min(300, windowWidth - 60) : Math.min(500, windowWidth - 80);
+  const imageHeight = windowWidth < 640 ? carouselWidth * 0.55 : Math.min(280, carouselWidth * 0.7);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -147,13 +127,8 @@ function Landingpage() {
     <div>
       <Navbar />
       {/* Hero Section */}
-      <div className="relative w-full min-h-[650px] md:min-h-[750px] overflow-hidden bg-[#070210]">
+      <div className="relative w-full min-h-[100vh] sm:min-h-[800px] overflow-hidden">
         {/* Memoized LightRays with persistent seed to prevent glitchy reloads */}
-        {useMemo(() => {
-          // Create a consistent seed to ensure the same ray pattern on each render
-          const staticSeed = 12345;
-          
-          return (
             <LightRays
               key="static-lightrays" // Static key prevents recreation
               raysOrigin="top-center"
@@ -165,7 +140,6 @@ function Landingpage() {
               mouseInfluence={0.1}
               noiseAmount={0.1}
               distortion={0.05}
-              seed={staticSeed} // Add consistent seed
               className="custom-rays"
               style={{
                 position: "absolute",
@@ -177,15 +151,14 @@ function Landingpage() {
                 pointerEvents: "none",
               }}
             />
-          );
-        }, [])} {/* Empty dependency array ensures it's only created once */}
-        <div className="absolute mt-15 md:mt-10 sm:mt-20 md:px-50 px-6 top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
+        {/* Empty dependency array ensures it's only created once */}
+        <div className="absolute md:mt-10 md:px-50 px-6 top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
           <BlurText
             text="Transforming ideas into Reality"
             delay={150}
             animateBy="words"
             direction="top"
-            className="text-5xl sm:text-6xl md:text-8xl font-bold glow text-white justify-center text-center"
+            className="text-6xl sm:text-6xl md:text-8xl font-bold glow text-white justify-center text-center"
           />
           <button className="mt-8 px-5 py-2 border border-gray-600 rounded-full bg-black/30 backdrop-blur text-sm font-medium flex items-center gap-2 text-white hover:border-white">
             <span>⚡</span> Code That Creates Change
@@ -193,7 +166,7 @@ function Landingpage() {
           {/* Changed from p to div to fix HTML nesting error */}
           <div className="mt-10 mb-4 text-lg md:text-2xl glow text-white max-w-3xl px-4 text-center leading-relaxed">
             <ShinyText
-              text=" I'm Pratham, a full stack developer passionate about building
+              text=" I'm Pratham, a Full stack developer passionate about building
             impactful solutions with MERN, Java, and cloud technologies. I love
             solving problems and collaborating on innovative projects."
               disabled={false}
@@ -201,7 +174,7 @@ function Landingpage() {
               className="custom-class"
             />
           </div>
-          <div className="flex gap-5 mt-12 justify-center">
+          <div className="flex gap-5 mt-5  justify-center">
             <a
               href="https://drive.google.com/file/d/1l3kQH2XV5BgrlCW0dpBJPm_gDSPEj1Rp/view?usp=sharing"
               target="_blank"
@@ -229,7 +202,7 @@ function Landingpage() {
       </div>
 
       {/* Magic Bento Section */}
-      <section className="flex flex-col items-center mt-16 md:mt-24 px-4">
+      <section className="flex flex-col items-center  px-4">
         <motion.h2
           className="text-3xl font-bold text-white mb-8 md:mb-10 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -266,20 +239,20 @@ function Landingpage() {
       </section>
 
       {/* Projects Gallery Section */}
-      <section className="max-w-5xl mx-auto mt-20 md:mt-24 px-4">
+      <section className="w-full mx-auto mt-20 md:mt-24 px-2 sm:px-4">
         {/* All Projects in One Carousel */}
         <div className="mt-6 md:mt-10">
           <h3 className="text-3xl font-bold text-white mb-8 md:mb-10 text-center">
             Featured Projects
           </h3>
-          <div className="flex justify-center w-full overflow-hidden">
-            <div className="w-full max-w-[500px]">
+          <div className="flex justify-center w-full">
+            <div className="w-full max-w-[400px] sm:max-w-[500px] overflow-visible">
               <Carousel
                 items={projectCarouselItems}
                 baseWidth={carouselWidth}
                 imageHeight={imageHeight}
                 autoplay={true}
-                autoplayDelay={3000}
+                autoplayDelay={4000}
                 pauseOnHover={true}
                 loop={true}
                 round={false}

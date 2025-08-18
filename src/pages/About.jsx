@@ -106,19 +106,19 @@ export default function About() {
             <div className="flex gap-4 mt-4 flex-wrap">
               <a
                 href="https://github.com/prathampmp23"
-                className="px-3 py-1 rounded border-1 border-gray-600"
+                className="px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
                 GitHub
               </a>
               <a
                 href="https://www.linkedin.com/in/pratham-potdar-49744b236"
-                className="px-3 py-1 rounded border-1 border-gray-600"
+                className="px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
                 LinkedIn
               </a>
               <a
                 href="mailto:prathampotdar.contact@gmail.com"
-                className="px-3 py-1 rounded border-1 border-gray-600"
+                className="px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
                 Email
               </a>

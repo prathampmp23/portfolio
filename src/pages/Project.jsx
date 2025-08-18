@@ -75,9 +75,10 @@ export default function Project() {
       ],
     },
   ];
-  // Memoized LightRays to prevent re-renders and glitches
-  const lightRaysBackground = useMemo(() => {
-    return (
+
+  return (
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#070210]">
+      <Navbar />
       <div
         style={{
           position: "fixed",
@@ -100,16 +101,8 @@ export default function Project() {
           mouseInfluence={0.1}
           noiseAmount={0.1}
           distortion={0.05}
-          seed={12345} // Consistent seed to prevent glitchy reloads
         />
       </div>
-    );
-  }, []);
-
-  return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-[#070210]">
-      <Navbar />
-      {lightRaysBackground}
       <section className="relative z-10 px-5 sm:px-6 md:px-20 mt-5 py-16 text-white">
         <h3 className="text-3xl mt-10 font-bold text-white mb-8 md:mb-10 text-center">
           Featured Projects
