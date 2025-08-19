@@ -280,7 +280,7 @@ function Landingpage() {
       </section>
 
       {/* Projects Gallery Section */}
-      <section className="flex flex-col items-center w-full mx-auto mt-20 md:mt-24 px-4">
+      <section className="flex flex-col items-center w-full mx-auto mt-15 px-4">
         {/* All Projects in One Carousel */}
         <div className="mt-6 md:mt-10 w-full max-w-4xl px-0 sm:px-4">
           <h3 className="text-3xl font-bold text-white mb-8 md:mb-10 text-center">
@@ -304,7 +304,7 @@ function Landingpage() {
       </section>
 
       {/* Connect Section */}
-      <section className="flex justify-center items-center min-h-[60vh] py-10 px-10 bg-gradient-to-br mt-10 mb-10">
+      <section className="flex justify-center items-center min-h-[60vh] md:min-h-[40vh] py-10 px-10 bg-gradient-to-br mt-10 mb-10">
         <div className="w-full max-w-4xl rounded-2xl shadow-xl flex flex-col md:flex-row overflow-hidden border-1 border-blue-950">
           {/* Illustration */}
           <div className="md:w-1/2 relative h-64 md:h-auto flex items-center justify-center bg-gradient-to-br p-0">
