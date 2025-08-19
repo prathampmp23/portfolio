@@ -310,7 +310,7 @@ function Landingpage() {
           <div className="md:w-1/2 relative h-64 md:h-auto flex items-center justify-center bg-gradient-to-br p-0">
             <div className="w-full h-full flex items-center justify-center bg-white p-0">
               <img
-                src="/public/images/paper_airplane_send.jpg"
+                src="/images/paper_airplane_send.jpg"
                 alt="Paper Plane"
                 className="w-full h-full object-contain"
               />
@@ -419,7 +419,7 @@ function Landingpage() {
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
-                    <img src="/public/images/paper-plane.png" alt="Send" className="w-5 h-5" />
+                    <img src="/images/paper-plane.png" alt="Send" className="w-5 h-5" />
                     Send Message
                   </span>
                 )}
