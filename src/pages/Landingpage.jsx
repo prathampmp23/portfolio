@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useMemo } from "react";
 import BlurText from "../blocks/TextAnimations/BlurText/BlurText";
 import LightRays from "../blocks/Backgrounds/LightRays/LightRays";
 import MagicBento from "../blocks/Components/MagicBento/MagicBento";
@@ -5,20 +6,10 @@ import Carousel from "../blocks/Components/Carousel/Carousel";
 import ShinyText from "../blocks/TextAnimations/ShinyText/ShinyText";
 import Navbar from "../blocks/Components/Navbar";
 import Footer from "../blocks/Components/Footer";
-import ScrollStack, {
-  ScrollStackItem,
-} from "../blocks/Components/ScrollStack/ScrollStack";
-import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
 
 function Landingpage() {
-  // Dummy project images
-  const projectImages = [
-    "/images/ApnaVideo.png",
-    "/images/GitForge.png",
-    "/images/WanderLust.png",
-  ];
-
   // Core technologies data for MagicBento
   const techStackData = [
     {
@@ -88,9 +79,6 @@ function Landingpage() {
     },
   ];
 
-  // EmailJS/Formspree integration placeholder
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("");
   const [windowWidth, setWindowWidth] = useState(500);
 
   useEffect(() => {
@@ -108,19 +96,72 @@ function Landingpage() {
 
   // Calculate responsive dimensions
   // Use a smaller base width for mobile to ensure proper display
-  const carouselWidth = windowWidth < 640 ? Math.min(300, windowWidth - 60) : Math.min(500, windowWidth - 80);
-  const imageHeight = windowWidth < 640 ? carouselWidth * 0.55 : Math.min(280, carouselWidth * 0.7);
+  const carouselWidth =
+    windowWidth < 640
+      ? Math.min(300, windowWidth - 60)
+      : Math.min(500, windowWidth - 80);
+  const imageHeight =
+    windowWidth < 640
+      ? carouselWidth * 0.55
+      : Math.min(280, carouselWidth * 0.7);
+
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    // Integrate with EmailJS or Formspree here
-    // Example: await emailjs.send(...)
-    // setStatus("Message sent! You'll both receive a confirmation email.");
-    setForm({ name: "", email: "", message: "" });
+    setLoading(true);
+    setStatus("");
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateIdAdmin = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_ADMIN;
+    const templateIdUser = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_USER;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Send email to you
+    emailjs
+      .send(
+        serviceId,
+        templateIdAdmin,
+        {
+          fullname: formData.fullname,
+          email: formData.email,
+          message: formData.message,
+        },
+        publicKey
+      )
+      .then(
+        () => {
+          setStatus("Message sent successfully to Pratham!");
+          setFormData({ fullname: "", email: "", message: "" });
+          setLoading(false);
+        },
+        (error) => {
+          setStatus("Failed to send message: " + error.text);
+          setLoading(false);
+        }
+      );
+
+    // Send auto-reply to sender
+    emailjs.send(
+      serviceId,
+      templateIdUser,
+      {
+        fullname: formData.fullname,
+        email: formData.email,
+        message: formData.message,
+      },
+      publicKey
+    );
   };
 
   return (
@@ -129,28 +170,28 @@ function Landingpage() {
       {/* Hero Section */}
       <div className="relative w-full min-h-[100vh] sm:min-h-[800px] overflow-hidden">
         {/* Memoized LightRays with persistent seed to prevent glitchy reloads */}
-            <LightRays
-              key="static-lightrays" // Static key prevents recreation
-              raysOrigin="top-center"
-              raysColor="#00ffff"
-              raysSpeed={1.5}
-              lightSpread={0.8}
-              rayLength={1.2}
-              followMouse={true}
-              mouseInfluence={0.1}
-              noiseAmount={0.1}
-              distortion={0.05}
-              className="custom-rays"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                zIndex: 0,
-                pointerEvents: "none",
-              }}
-            />
+        <LightRays
+          key="static-lightrays" // Static key prevents recreation
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
         {/* Empty dependency array ensures it's only created once */}
         <div className="absolute md:mt-10 md:px-50 px-6 top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
           <BlurText
@@ -239,14 +280,14 @@ function Landingpage() {
       </section>
 
       {/* Projects Gallery Section */}
-      <section className="w-full mx-auto mt-20 md:mt-24 px-2 sm:px-4">
+      <section className="flex flex-col items-center w-full mx-auto mt-20 md:mt-24 px-4">
         {/* All Projects in One Carousel */}
-        <div className="mt-6 md:mt-10">
+        <div className="mt-6 md:mt-10 w-full max-w-4xl px-0 sm:px-4">
           <h3 className="text-3xl font-bold text-white mb-8 md:mb-10 text-center">
             Featured Projects
           </h3>
           <div className="flex justify-center w-full">
-            <div className="w-full max-w-[400px] sm:max-w-[500px] overflow-visible">
+            <div className="w-full max-w-[500px] md:max-w-[600px] lg:max-w-[700px] xl:max-w-[800px] px-0 sm:px-4 overflow-visible">
               <Carousel
                 items={projectCarouselItems}
                 baseWidth={carouselWidth}
@@ -263,53 +304,130 @@ function Landingpage() {
       </section>
 
       {/* Connect Section */}
-      <section className="max-w-xl mx-auto mt-20 md:mt-24 mb-20 md:mb-24 px-5">
-        <h2 className="text-3xl font-bold text-white mb-8 md:mb-10 text-center">
-          Connect with Me
-        </h2>
-        <form
-          className="rounded-2xl shadow-lg p-6 md:p-8 flex flex-col gap-5 md:gap-6 bg-black/20 backdrop-blur-sm border border-gray-800"
-          onSubmit={handleSubmit}
-        >
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            required
-            className="px-5 py-3 rounded-lg text-white border border-gray-700 focus:outline-none bg-black/30"
-          />
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Your Email"
-            required
-            className="px-5 py-3 rounded-lg text-white border border-gray-700 focus:outline-none bg-black/30"
-          />
-          <textarea
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Your Message"
-            required
-            className="px-5 py-3 rounded-lg text-white border border-gray-700 focus:outline-none bg-black/30"
-            rows={4}
-          />
-          <button
-            type="submit"
-            className="mt-2 px-6 py-3.5 rounded-xl bg-teal-400 text-black font-semibold hover:bg-teal-500 transition"
-          >
-            Send
-          </button>
-          {status && <p className="text-green-400 mt-1">{status}</p>}
-        </form>
-        {/* <p className="text-gray-400 mt-4 text-sm">
-          When you send a message, both you and I will receive an email
-          confirmation about the connection.
-        </p> */}
+      <section className="flex justify-center items-center min-h-[60vh] py-10 px-10 bg-gradient-to-br mt-10 mb-10">
+        <div className="w-full max-w-4xl rounded-2xl shadow-xl flex flex-col md:flex-row overflow-hidden border-1 border-blue-950">
+          {/* Illustration */}
+          <div className="md:w-1/2 relative h-64 md:h-auto flex items-center justify-center bg-gradient-to-br p-0">
+            <div className="w-full h-full flex items-center justify-center bg-white p-0">
+              <img
+                src="/public/images/paper_airplane_send.jpg"
+                alt="Paper Plane"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+          {/* Form Section */}
+          <div className="md:w-1/2 p-8 flex flex-col justify-center">
+            <h3 className="text-3xl font-bold text-white mb-2 text-center md:text-left">
+              CONTACT US
+            </h3>
+            {/* <p className="mb-2 text-gray-700 text-center md:text-left">
+              Or reach out manually to{" "}
+              <a
+                href="mailto:prathampotdar.contact@gmail.com"
+                className="text-blue-600 font-semibold hover:underline"
+              >
+                prathampotdar.contact@gmail.com
+              </a>
+            </p> */}
+            <form onSubmit={sendEmail} className="space-y-4 mt-4">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="mt-1 w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white-400 transition"
+                />
+                <span className="text-xs text-white-500 mt-1 block">
+                  We'll never share your email with anyone else.
+                </span>
+              </div>
+              <div>
+                <label
+                  htmlFor="fullname"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Your name
+                </label>
+                <input
+                  type="text"
+                  name="fullname"
+                  id="fullname"
+                  required
+                  minLength="3"
+                  value={formData.fullname}
+                  onChange={handleChange}
+                  className="mt-1 w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white-400 transition"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Your message
+                </label>
+                <textarea
+                  name="message"
+                  id="message"
+                  required
+                  minLength="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="mt-1 w-full p-2 border border-gray-300 rounded-lg h-24 resize-none focus:outline-none focus:ring-2 focus:ring-white-400 transition"
+                />
+              </div>
+              <button
+                type="submit"
+                className={`w-full bg-white-500 text-white py-2 rounded-lg bg-blue-600 hover:bg-blue-800 transition flex items-center justify-center gap-2 ${
+                  loading ? "opacity-70 cursor-not-allowed" : ""
+                }`}
+                disabled={loading}
+              >
+                {loading ? (
+                  <span className="flex items-center gap-2">
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      ></path>
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <img src="/public/images/paper-plane.png" alt="Send" className="w-5 h-5" />
+                    Send Message
+                  </span>
+                )}
+              </button>
+              <p className="text-center text-sm mt-2 text-teal-600 font-semibold">{status}</p>
+            </form>
+          </div>
+        </div>
       </section>
 
       <Footer />
