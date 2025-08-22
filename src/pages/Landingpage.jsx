@@ -334,7 +334,7 @@ function Landingpage() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-white/80"
                 >
                   Email address
                 </label>
@@ -345,7 +345,7 @@ function Landingpage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-1 w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white-400 transition"
+                  className="mt-1 w-full p-2 border border-white/text-white/80 rounded-lg focus:outline-none focus:ring-2 focus:ring-white-400 transition"
                 />
                 <span className="text-xs text-white-500 mt-1 block">
                   We'll never share your email with anyone else.
@@ -354,7 +354,7 @@ function Landingpage() {
               <div>
                 <label
                   htmlFor="fullname"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-white/80"
                 >
                   Your name
                 </label>
@@ -366,13 +366,13 @@ function Landingpage() {
                   minLength="3"
                   value={formData.fullname}
                   onChange={handleChange}
-                  className="mt-1 w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white-400 transition"
+                  className="mt-1 w-full p-2 border border-white/text-white/80 rounded-lg focus:outline-none focus:ring-2 focus:ring-white-400 transition"
                 />
               </div>
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-white/80"
                 >
                   Your message
                 </label>
@@ -383,7 +383,7 @@ function Landingpage() {
                   minLength="5"
                   value={formData.message}
                   onChange={handleChange}
-                  className="mt-1 w-full p-2 border border-gray-300 rounded-lg h-24 resize-none focus:outline-none focus:ring-2 focus:ring-white-400 transition"
+                  className="mt-1 w-full p-2 border border-white/text-white/80 rounded-lg h-24 resize-none focus:outline-none focus:ring-2 focus:ring-white-400 transition"
                 />
               </div>
               <button
