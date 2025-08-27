@@ -1,0 +1,10 @@
+input, textarea {
+	background: #000000;
+	color: #fff;
+	border: 1px solid #444;
+	padding: 12px;
+	border-radius: 8px;
+}
+input::placeholder, textarea::placeholder {
+	color: #aaa;
+}

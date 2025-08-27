@@ -6,13 +6,13 @@ export default function Navbar() {
     <>
       {/* Navbar */}
       <div className="flex justify-center">
-        <nav className="fixed top-10 w-[75%] flex justify-between items-center px-6 py-4 border border-gray-700 rounded-full bg-black/40 backdrop-blur-lg z-50">
+        <nav className="fixed top-10 w-[80%] flex justify-between items-center px-6 py-4 border border-gray-700 rounded-full bg-black/40 backdrop-blur-lg z-50">
           <div className="flex items-center gap-2">
             {/* <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-teal-600 to-purple-500"></div> */}
             <img
-              src="/images/layers.png"
+              src="/images/logo3.png"
               alt="DevFolio Logo"
-              className="w-6 h-6"
+              className="w-6 h-6 rounded-2xl"
             />
             <Link to="/" className="hover:text-white">
               <span className="text-lg font-semibold text-white">DevFolio</span>

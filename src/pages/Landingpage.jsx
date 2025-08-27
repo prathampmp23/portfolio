@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import "../App.css";
 import BlurText from "../blocks/TextAnimations/BlurText/BlurText";
 import LightRays from "../blocks/Backgrounds/LightRays/LightRays";
 import MagicBento from "../blocks/Components/MagicBento/MagicBento";
