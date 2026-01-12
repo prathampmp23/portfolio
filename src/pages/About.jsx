@@ -48,13 +48,13 @@ export default function About() {
               className="w-32 h-32 rounded-full object-cover border-4 border-[#203a43] mb-4"
               imageSrc="/images/Photo.jpg"
               altText="Pratham Potdar - Developer Album Cover"
-              captionText="Pratham Potdar - Developer"
+              captionText="Software Developer"
               containerHeight="200px"
               containerWidth="200px"
               imageHeight="200px"
               imageWidth="200px"
               rotateAmplitude={12}
-              scaleOnHover={1.2}
+              scaleOnHover={1.3}
               showMobileWarning={false}
               showTooltip={true}
               displayOverlayContent={true}
@@ -106,20 +106,46 @@ export default function About() {
             <div className="flex gap-4 mt-4 flex-wrap">
               <a
                 href="https://github.com/prathampmp23"
-                className="px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
+                className="flex items-center gap-2 px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
+                <img
+                    src="/images/Github.png"
+                    alt="GitHubLogo"
+                    className="w-6 h-6 object-contain"
+                  />
                 GitHub
               </a>
               <a
                 href="https://www.linkedin.com/in/pratham-potdar-49744b236"
-                className="px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
+                className="flex items-center gap-2 px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
+                 <img
+                    src="/images/linkedin.png"
+                    alt="linkedinLogo"
+                    className="w-6 h-6 object-contain"
+                  />
                 LinkedIn
               </a>
               <a
-                href="mailto:prathampotdar.contact@gmail.com"
-                className="px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
+                href="https://leetcode.com/u/PrathamPotdar"
+                className="flex items-center gap-2 px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
+                 <img
+                    src="/images/leetcode.png"
+                    alt="LeetcodeLogo"
+                    className="w-6 h-6 object-contain"
+                  />
+                Leetcode
+              </a>
+              <a
+                href="mailto:prathampotdar.contact@gmail.com"
+                className="flex items-center gap-2 px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
+              >
+                 <img
+                    src="/images/gmail.png"
+                    alt="GmailLogo"
+                    className="w-6 h-6 object-contain"
+                  />
                 Email
               </a>
             </div>
@@ -129,7 +155,7 @@ export default function About() {
               foundation in DSA and hands-on experience in MERN Stack, Java, and
               Next.js, I thrive on solving problems, learning new technologies,
               and turning ideas into reality. <br />
-              🚀 Eager to contribute to innovative projects and grow as a
+              Eager to contribute to innovative projects and grow as a
               professional in the tech industry.
             </p>
           </section>
@@ -198,8 +224,9 @@ export default function About() {
                 { name: "MongoDB", img: "/images/Mongo.svg" },
                 { name: "React", img: "/images/React.svg" },
                 { name: "Node.js", img: "/images/Nodejs.svg" },
-                { name: "ExpressJs", img: "/images/ExpressJs.png" },
+                { name: "ExpressJs", img: "/images/ExpressJsLogo.png" },
                 { name: "Java", img: "/images/Java.svg" },
+                { name: "SpringBoot", img: "/images/springboot.png" },
                 { name: "MySQL", img: "/images/MySql.svg" },
                 { name: "Next.js", img: "/images/Nextjs.svg" },
                 { name: "Tailwind CSS", img: "/images/Tailwind.png" },

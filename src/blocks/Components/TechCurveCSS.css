@@ -1,0 +1,70 @@
+.tech-curve-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 5rem;
+  margin-top: -100px;
+}
+
+.tech-curve-fade {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #05020d 0%,
+    transparent 15%,
+    transparent 85%,
+    #05020d 100%
+  );
+  z-index: 2;
+}
+
+.tech-curve-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: tech-scroll 35s linear infinite;
+}
+
+.tech-curve-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  /* background: rgba(255, 255, 255, 0.018); */
+  backdrop-filter: blur(14px);
+  /* border: 1px solid rgba(255, 255, 255, 0.08); */
+  padding: 10px 10px;
+}
+
+.tech-curve-img {
+  height: 44px;
+  width: auto;
+  opacity: 0.75;
+  transition: all 200ms ease;
+}
+
+.tech-curve-img:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+@keyframes tech-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-curve-track {
+    gap: 40px;
+  }
+
+  .tech-curve-img {
+    height: 36px;
+  }
+}

@@ -9,6 +9,7 @@ import Navbar from "../blocks/Components/Navbar";
 import Footer from "../blocks/Components/Footer";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
+import TechCurve from "../blocks/Components/TechCurve";
 
 function Landingpage() {
   // Core technologies data for MagicBento
@@ -194,7 +195,7 @@ function Landingpage() {
           }}
         />
         {/* Empty dependency array ensures it's only created once */}
-        <div className="absolute md:mt-10 md:px-50 px-6 top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
+        <div className="absolute md:mt-10 md:px-0 px-6 top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
           <BlurText
             text="Transforming ideas into Reality"
             delay={150}
@@ -242,9 +243,13 @@ function Landingpage() {
           </div>
         </div>
       </div>
+      
+      {/* TechStack Curve */}
+      <TechCurve />
+
 
       {/* Magic Bento Section */}
-      <section className="flex flex-col items-center  px-4">
+      <section className="flex flex-col items-center  px-4 mt-10">
         <motion.h2
           className="text-3xl font-bold text-white mb-8 md:mb-10 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -420,12 +425,18 @@ function Landingpage() {
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
-                    <img src="/images/paper-plane.png" alt="Send" className="w-5 h-5" />
+                    <img
+                      src="/images/paper-plane.png"
+                      alt="Send"
+                      className="w-5 h-5"
+                    />
                     Send Message
                   </span>
                 )}
               </button>
-              <p className="text-center text-sm mt-2 text-teal-600 font-semibold">{status}</p>
+              <p className="text-center text-sm mt-2 text-teal-600 font-semibold">
+                {status}
+              </p>
             </form>
           </div>
         </div>
