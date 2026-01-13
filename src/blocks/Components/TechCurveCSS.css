@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 5rem;
+  padding: 3rem;
   margin-top: -100px;
 }
 
@@ -32,10 +32,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  /* background: rgba(255, 255, 255, 0.018); */
+  background: rgba(255, 255, 255, 0.018);
   backdrop-filter: blur(14px);
-  /* border: 1px solid rgba(255, 255, 255, 0.08); */
-  padding: 10px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.374);
+  padding: 10px 20px;
 }
 
 .tech-curve-img {
@@ -43,6 +43,9 @@
   width: auto;
   opacity: 0.75;
   transition: all 200ms ease;
+}
+.tech-curve-label {
+  color: white;
 }
 
 .tech-curve-img:hover {
