@@ -199,6 +199,28 @@ export default function Project() {
         "Experimental web technology",
       ],
     },
+    {
+      title: "3D Gesture Controlled Fluid Cube",
+      description:
+        "An advanced 3D fluid simulation contained within a transparent cube, controlled using real-time hand gestures. The project combines physics-based particle motion, gravity-driven fluid settling, and palm-based cube rotation using webcam hand tracking for an immersive, hands-free interaction experience.",
+      image: "/images/FluidCube.png",
+      repo: "https://github.com/prathampmp23/3D-Gesture-Animated-websites",
+      website:
+        "https://3d-gesture-animated-websites.vercel.app/FluidAnimation.html",
+      techStack: [
+        { name: "HTML5", img: "/images/Html.svg" },
+        { name: "JavaScript", img: "/images/Js.png" },
+        { name: "Three.js", img: "/images/ThreeJS.png" },
+        { name: "MediaPipe Hands", img: "/images/MediaPipe.png" },
+      ],
+      highlights: [
+        "Real-time gesture-controlled cube rotation",
+        "Physics-based fluid particle simulation",
+        "Gravity and inertia-driven motion",
+        "Webcam-powered hand tracking",
+        "Experimental natural user interface",
+      ],
+    },
   ];
 
   return (
