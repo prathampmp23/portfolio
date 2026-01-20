@@ -259,7 +259,7 @@ export default function Project() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="border-cyan-950 border-1 rounded-2xl shadow-2xl p-0 flex flex-col md:flex-row items-stretch w-full max-w-4xl mx-auto bg-gradient-to-b from-[#181c24] to-[#0f1014]"
+              className="border-cyan-950 border-1 rounded-2xl shadow-2xl p-0 flex flex-col md:flex-row items-stretch w-full max-w-4xl mx-auto bg-gradient-to-b from-[#181c2498] to-[#0f101400]"
             >
               {/* Image Aside */}
               <div className="relative md:w-2/5 w-full flex-shrink-0 flex items-center justify-center bg-black/10  md:rounded-l-2xl md:rounded-tr-none">
@@ -360,7 +360,7 @@ export default function Project() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-contain p-3"
+                  className="w-80 h-full object-contain"
                 />
 
                 {/* Hover Overlay */}
