@@ -22,7 +22,7 @@ const defaultCardData = [
   {
     color: "#060010",
     title: "Authentication",
-    description: "JWT & Firebase for secure access",
+    description: "Spring security & JWT for secure access",
     label: "Security",
   },
   {
@@ -112,8 +112,8 @@ const ParticleCard = ({
       createParticleElement(
         Math.random() * width,
         Math.random() * height,
-        glowColor
-      )
+        glowColor,
+      ),
     );
     particlesInitialized.current = true;
   }, [particleCount, glowColor]);
@@ -155,7 +155,7 @@ const ParticleCard = ({
         gsap.fromTo(
           clone,
           { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" }
+          { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" },
         );
 
         gsap.to(clone, {
@@ -270,7 +270,7 @@ const ParticleCard = ({
         Math.hypot(x, y),
         Math.hypot(x - rect.width, y),
         Math.hypot(x, y - rect.height),
-        Math.hypot(x - rect.width, y - rect.height)
+        Math.hypot(x - rect.width, y - rect.height),
       );
 
       const ripple = document.createElement("div");
@@ -300,7 +300,7 @@ const ParticleCard = ({
           duration: 0.8,
           ease: "power2.out",
           onComplete: () => ripple.remove(),
-        }
+        },
       );
     };
 
@@ -431,7 +431,7 @@ const GlobalSpotlight = ({
           e.clientX,
           e.clientY,
           glowIntensity,
-          spotlightRadius
+          spotlightRadius,
         );
       });
 
@@ -446,8 +446,8 @@ const GlobalSpotlight = ({
         minDistance <= proximity
           ? 0.8
           : minDistance <= fadeDistance
-          ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
-          : 0;
+            ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
+            : 0;
 
       gsap.to(spotlightRef.current, {
         opacity: targetOpacity,
@@ -567,10 +567,10 @@ const MagicBento = ({
                   <div className="card__label">{card.label}</div>
                   {card.image && (
                     <div className="card__image-container">
-                      <img 
-                        src={card.image} 
-                        alt={card.label} 
-                        className="card__image" 
+                      <img
+                        src={card.image}
+                        alt={card.label}
+                        className="card__image"
                       />
                     </div>
                   )}
@@ -656,7 +656,7 @@ const MagicBento = ({
                     Math.hypot(x, y),
                     Math.hypot(x - rect.width, y),
                     Math.hypot(x, y - rect.height),
-                    Math.hypot(x - rect.width, y - rect.height)
+                    Math.hypot(x - rect.width, y - rect.height),
                   );
 
                   const ripple = document.createElement("div");
@@ -686,7 +686,7 @@ const MagicBento = ({
                       duration: 0.8,
                       ease: "power2.out",
                       onComplete: () => ripple.remove(),
-                    }
+                    },
                   );
                 };
 
@@ -699,10 +699,10 @@ const MagicBento = ({
                 <div className="card__label">{card.label}</div>
                 {card.image && (
                   <div className="card__image-container">
-                    <img 
-                      src={card.image} 
-                      alt={card.label} 
-                      className="card__image" 
+                    <img
+                      src={card.image}
+                      alt={card.label}
+                      className="card__image"
                     />
                   </div>
                 )}

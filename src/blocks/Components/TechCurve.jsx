@@ -14,7 +14,7 @@ export default function TechCurve() {
     { name: "Java", img: "/images/Java.svg" },
     { name: "SpringBoot", img: "/images/springboot.png" },
     { name: "MySQL", img: "/images/MySql.svg" },
-    { name: "Next.js", img: "/images/Nextjs.svg" },
+    // { name: "Next.js", img: "/images/Nextjs.svg" },
     { name: "Tailwind CSS", img: "/images/Tailwind.png" },
     { name: "Git", img: "/images/git.png" },
     { name: "GitHub", img: "/images/Github.png" },

@@ -109,51 +109,51 @@ export default function About() {
                 className="flex items-center gap-2 px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
                 <img
-                    src="/images/Github.png"
-                    alt="GitHubLogo"
-                    className="w-6 h-6 object-contain"
-                  />
+                  src="/images/Github.png"
+                  alt="GitHubLogo"
+                  className="w-6 h-6 object-contain"
+                />
                 GitHub
               </a>
               <a
                 href="https://www.linkedin.com/in/pratham-potdar-49744b236"
                 className="flex items-center gap-2 px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
-                 <img
-                    src="/images/linkedin.png"
-                    alt="linkedinLogo"
-                    className="w-6 h-6 object-contain"
-                  />
+                <img
+                  src="/images/linkedin.png"
+                  alt="linkedinLogo"
+                  className="w-6 h-6 object-contain"
+                />
                 LinkedIn
               </a>
               <a
                 href="https://leetcode.com/u/PrathamPotdar"
                 className="flex items-center gap-2 px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
-                 <img
-                    src="/images/leetcode.png"
-                    alt="LeetcodeLogo"
-                    className="w-6 h-6 object-contain"
-                  />
+                <img
+                  src="/images/leetcode.png"
+                  alt="LeetcodeLogo"
+                  className="w-6 h-6 object-contain"
+                />
                 Leetcode
               </a>
               <a
                 href="mailto:prathampotdar.contact@gmail.com"
                 className="flex items-center gap-2 px-3 py-1 rounded border-1 border-gray-600 hover:bg-[#0233487e]"
               >
-                 <img
-                    src="/images/gmail.png"
-                    alt="GmailLogo"
-                    className="w-6 h-6 object-contain"
-                  />
+                <img
+                  src="/images/gmail.png"
+                  alt="GmailLogo"
+                  className="w-6 h-6 object-contain"
+                />
                 Email
               </a>
             </div>
             <p className="mt-6 text-lg text-gray-200 max-w-2xl">
               I’m Pratham Potdar, a Computer Science and Engineering student
               passionate about building impactful solutions. With a strong
-              foundation in DSA and hands-on experience in MERN Stack, Java, and
-              Next.js, I thrive on solving problems, learning new technologies,
+              foundation in DSA and hands-on experience in Java, SpringBoot and MERN stack
+              I thrive on solving problems, learning new technologies,
               and turning ideas into reality. <br />
               Eager to contribute to innovative projects and grow as a
               professional in the tech industry.
@@ -165,6 +165,31 @@ export default function About() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Work Experience
             </h2>
+            <div className="mb-8">
+              <div className="flex flex-col sm:flex-row justify-between sm:items-center">
+                <div>
+                  <div className="text-2xl font-semibold"> Cognizant</div>
+                  <div className="text-teal-400 font-medium">
+                    GenC Intern (Internship)
+                  </div>
+                </div>
+                <div className="text-lg text-gray-400">March - May 2026</div>
+              </div>
+              <ul className="list-disc ml-6 mt-2 text-gray-200">
+                <li>
+                  Contributing to microservices-based enterprise applications
+                  using Java, Spring Boot, JDBC, Hibernate, REST APIs, SQL.
+                </li>
+                <li>
+                  Involved in developing microservices using Java and Spring
+                  Boot, with API testing, debugging, and database operations.
+                </li>
+                <li>
+                  Testing and validating APIs using Postman, participating in
+                  debugging, issue resolution, and performance improvements.
+                </li>
+              </ul>
+            </div>
             <div className="mb-8">
               <div className="flex flex-col sm:flex-row justify-between sm:items-center">
                 <div>
@@ -185,18 +210,13 @@ export default function About() {
                 </li>
                 <li>
                   Built dynamic interfaces with JavaScript (ES6+), reducing form
-                  input errors by 45% through DOM manipulation and validation.
+                  input errors through DOM manipulation and validation.
                 </li>
                 <li>
                   Created reusable CSS and JS components, streamlining
-                  development and reducing code duplication by 35%.
+                  development and reducing code duplication.
                 </li>
               </ul>
-              {/* <img
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
-                alt="FLY Project"
-                className="mt-4 rounded-lg border border-[#203a43] w-full sm:w-80"
-              /> */}
             </div>
           </section>
 
@@ -228,7 +248,7 @@ export default function About() {
                 { name: "Java", img: "/images/Java.svg" },
                 { name: "SpringBoot", img: "/images/springboot.png" },
                 { name: "MySQL", img: "/images/MySql.svg" },
-                { name: "Next.js", img: "/images/Nextjs.svg" },
+                // { name: "Next.js", img: "/images/Nextjs.svg" },
                 { name: "Tailwind CSS", img: "/images/Tailwind.png" },
                 { name: "Git", img: "/images/git.png" },
                 { name: "GitHub", img: "/images/Github.png" },

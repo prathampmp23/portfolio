@@ -8,7 +8,7 @@ export default function Footer() {
           backdrop-blur-lg z-50"
       >
         <p className="text-white/80 text-sm">
-          © 2025 DevFolio. All rights reserved.
+          © 2026 DevFolio. All rights reserved.
         </p>
 
         <div className="flex text-white/80 text-sm">

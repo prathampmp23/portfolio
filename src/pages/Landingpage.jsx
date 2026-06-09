@@ -210,7 +210,7 @@ function Landingpage() {
           <div className="mt-10 mb-4 text-lg md:text-2xl glow text-white max-w-3xl px-4 text-center leading-relaxed">
             <ShinyText
               text=" I'm Pratham, a Full stack developer passionate about building
-            impactful solutions with MERN, Java, and cloud technologies. I love
+            impactful solutions with MERN, Java, SpringBoot and cloud technologies. I love
             solving problems and collaborating on innovative projects."
               disabled={false}
               speed={3}
