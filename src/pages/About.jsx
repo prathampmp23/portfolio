@@ -65,7 +65,8 @@ export default function About() {
             <div className="flex items-center gap-2 mb-2">
               <span className="text-[#ff6a6a] text-xl">&#x1F5FA;</span>
               <span className="text-base text-gray-200">
-                Nagpur, Maharashtra
+                {/* Nagpur, Maharashtra */}
+                Bangalore, Karnataka
               </span>
             </div>
             <div className="flex gap-2 mb-4 flex-wrap justify-center">
@@ -152,9 +153,9 @@ export default function About() {
             <p className="mt-6 text-lg text-gray-200 max-w-2xl">
               I’m Pratham Potdar, a Computer Science and Engineering student
               passionate about building impactful solutions. With a strong
-              foundation in DSA and hands-on experience in Java, SpringBoot and MERN stack
-              I thrive on solving problems, learning new technologies,
-              and turning ideas into reality. <br />
+              foundation in DSA and hands-on experience in Java, SpringBoot and
+              MERN stack I thrive on solving problems, learning new
+              technologies, and turning ideas into reality. <br />
               Eager to contribute to innovative projects and grow as a
               professional in the tech industry.
             </p>
@@ -168,7 +169,44 @@ export default function About() {
             <div className="mb-8">
               <div className="flex flex-col sm:flex-row justify-between sm:items-center">
                 <div>
-                  <div className="text-2xl font-semibold"> Cognizant</div>
+                  <div className="flex items-center gap-2 py-2 rounded-lg shadow-md transition-all duration-300">
+                    <img
+                      src="/images/cognizant.png"
+                      className="w-10 h-10 object-contain rounded-2xl"
+                    />
+                    <span className="text-white text-2xl font-semibold">
+                      Cognizant
+                    </span>
+                  </div>
+                  <div className="text-teal-400 font-medium">
+                    Programmer Analyst Trainee (Full-Time)
+                  </div>
+                </div>
+                <div className="text-lg text-gray-400">August 2026</div>
+              </div>
+              <ul className="list-disc ml-6 mt-2 text-gray-200">
+                <li>
+                  Involved in developing microservices using Java and Spring
+                  Boot, with API testing, debugging, and database operations.
+                </li>
+                {/* <li>
+                  Testing and validating APIs using Postman, participating in
+                  debugging, issue resolution, and performance improvements.
+                </li> */}
+              </ul>
+            </div>
+            <div className="mb-8">
+              <div className="flex flex-col sm:flex-row justify-between sm:items-center">
+                <div>
+                  <div className="flex items-center gap-2 py-2 rounded-lg shadow-md transition-all duration-300">
+                    <img
+                      src="/images/cognizant.png"
+                      className="w-10 h-10 object-contain rounded-2xl"
+                    />
+                    <span className="text-white text-2xl font-semibold">
+                      Cognizant
+                    </span>
+                  </div>
                   <div className="text-teal-400 font-medium">
                     GenC Intern (Internship)
                   </div>
@@ -193,9 +231,15 @@ export default function About() {
             <div className="mb-8">
               <div className="flex flex-col sm:flex-row justify-between sm:items-center">
                 <div>
-                  <div className="text-2xl font-semibold">
-                    {" "}
-                    ICEICO Technologies Pvt. Ltd
+                  <div className="text-2xl font-semibold"> </div>
+                  <div className="flex items-center gap-2 py-2 rounded-lg shadow-md transition-all duration-300">
+                    <img
+                      src="/images/ICEICO.png"
+                      className="w-10 h-10 object-contain rounded-2xl"
+                    />
+                    <span className="text-white text-2xl font-semibold">
+                      ICEICO Technologies
+                    </span>
                   </div>
                   <div className="text-teal-400 font-medium">
                     Web Developer Trainee (Internship)

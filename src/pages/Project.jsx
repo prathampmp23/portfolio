@@ -53,6 +53,31 @@ export default function Project() {
       ],
     },
     {
+      title: "KaamKhojAI - Voice-first multilingual job discovery platform",
+      description:
+        "Developed KaamKhojAI, a voice-first job discovery platform designed to help blue-collar workers overcome literacy and language barriers. Implemented multilingual voice interaction in English, Hindi, and Marathi using the Web Speech API and AI-powered conversational assistance with Llama 3.3 70B. Built a responsive React.js frontend and Node.js/Express backend with JWT authentication and MongoDB for user, job, and application management. Implemented rule-based job matching based on age, experience, job title, and shift availability, along with contractor job management and trust verification features.",
+      image: "/images/KaamKhojAI.png",
+      repo: "https://github.com/prathampmp23/kaamkhojAI",
+      website: "https://kaamkhojai.onrender.com",
+      techStack: [
+        { name: "React.js", img: "/images/React.svg" },
+        { name: "Node.js", img: "/images/Nodejs.svg" },
+        { name: "Express.js", img: "/images/ExpressJs.png" },
+        { name: "MongoDB", img: "/images/Mongo.svg" },
+        { name: "Llama 3.3 70B", img: "/images/Llama.png" },
+        { name: "Web Speech API", img: "/images/WebSpeech.png" },
+        { name: "JWT", img: "/images/JWT.png" },
+      ],
+      highlights: [
+        "Voice-first job discovery",
+        "English, Hindi & Marathi support",
+        "AI-powered profile creation",
+        "Rule-based smart job matching",
+        "Contractor job management",
+        "Trust & verification system",
+      ],
+    },
+    {
       title: "GitForge – Git Command Simulation with AWS Integration",
       description:
         "Built a GitHub-like platform simulating Git operations (init, add, commit, push, etc.) with real-time file tracking and user-specific repositories. Integrated JWT authentication, AWS S3 for file storage, and EC2 for backend Git logic and file management. Developed a responsive React frontend with user dashboards, deployed via AWS Amplify.",
